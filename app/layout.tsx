@@ -23,9 +23,9 @@ export default function RootLayout({
 
     return (
 
-        <html lang="en">
+        <html lang="en" className={`w-full h-full p-0 m-0`}>
         
-            <body className={`${inter.className}`}>{children}</body>
+            <body className={`flex flex-wrap ${inter.className} w-full h-full m-0 p-0`}>{children}</body>
         
         </html>
     
