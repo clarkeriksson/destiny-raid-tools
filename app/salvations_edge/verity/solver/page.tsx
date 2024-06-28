@@ -113,11 +113,11 @@ export default function Page(): React.ReactNode {
                 }
             </div>
     
-            <div className={`flex flex-col place-self-center`}>
+            <div className={`flex flex-col place-self-center h-[3em]`}>
 
                 {
                     steps.map((step, index) => (
-                        <div key={index} className={`text-2xl`}>{`${index+1})`}{step}</div>
+                        <div key={index} className={`text-2xl`}>{step}</div>
                     ))
                 }
 
@@ -153,6 +153,7 @@ function solveDissect(guardian2DShapes: Array<Shapes2DName>, guardian3DShapes: A
     //console.log(JSON.parse(JSON.stringify(stepMatrix)).data);
 
     let i = 0;
+    let stepCounter = 0;
     while (i < 3) {
 
         const removeIndex1 = stepMatrix.data[i].findIndex(val => val < 0);
@@ -169,7 +170,8 @@ function solveDissect(guardian2DShapes: Array<Shapes2DName>, guardian3DShapes: A
                 stepMatrix.data[i] = newRowi;
                 stepMatrix.data[j] = newRowj;
 
-                steps.push(<>{` Dissect`} <b>{Shapes2DIndex[removeIndex1]}</b> {`from`} <b>{Positions[i]}</b> {`and then`} <b>{Shapes2DIndex[removeIndex2]}</b> {`from`} <b>{Positions[j]}</b></>);
+                steps.push(<>{`${stepCounter+1}) Dissect`} <b>{Shapes2DIndex[removeIndex1]}</b> {`from`} <b>{Positions[i]}</b> {`and then`} <b>{Shapes2DIndex[removeIndex2]}</b> {`from`} <b>{Positions[j]}</b></>);
+                stepCounter++;
 
                 //console.log(JSON.parse(JSON.stringify(stepMatrix)).data);
 
