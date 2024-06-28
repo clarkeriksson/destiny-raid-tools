@@ -63,6 +63,10 @@ export default function Page(): React.ReactNode {
     function setGuardian2DShapeAt(index: number, shape: Shapes2DName): void {
     
         const newGuardian2DShapes = [...guardian2DShapes];
+        if (newGuardian2DShapes.includes(shape)) {
+            const oldIndex = newGuardian2DShapes.indexOf(shape);
+            newGuardian2DShapes[oldIndex] = newGuardian2DShapes[index];
+        }
         newGuardian2DShapes[index] = shape;
         setGuardian2DShapes(newGuardian2DShapes);
     
@@ -80,7 +84,7 @@ export default function Page(): React.ReactNode {
 
         <div className={`w-full h-full flex flex-col place-self-center justify-center gap-4`}>
 
-            <div className={`flex flex-row gap-4 place-self-center`}>
+            <div className={`flex flex-row gap-10 place-self-center`}>
                 {
                     [0, 1, 2].map(val => {
                         return (
@@ -113,7 +117,7 @@ export default function Page(): React.ReactNode {
 
                 {
                     steps.map((step, index) => (
-                        <div key={index} className={`text-2xl`}>{`${index+1}) ${step}`}</div>
+                        <div key={index} className={`text-2xl`}>{`${index+1})`}{step}</div>
                     ))
                 }
 
@@ -144,7 +148,7 @@ function solveDissect(guardian2DShapes: Array<Shapes2DName>, guardian3DShapes: A
 
     const stepMatrix = Matrix.returnSubtraction(new Matrix([[1, 1, 1], [1, 1, 1], [1, 1, 1]]), matrix2D, matrix3D);
 
-    const steps: string[] = [];
+    const steps: React.ReactNode[] = [];
 
     //console.log(JSON.parse(JSON.stringify(stepMatrix)).data);
 
@@ -165,7 +169,7 @@ function solveDissect(guardian2DShapes: Array<Shapes2DName>, guardian3DShapes: A
                 stepMatrix.data[i] = newRowi;
                 stepMatrix.data[j] = newRowj;
 
-                steps.push(`Dissect ${Shapes2DIndex[removeIndex1]} from ${Positions[i]} and ${Shapes2DIndex[removeIndex2]} from ${Positions[j]}`);
+                steps.push(<>{` Dissect`} <b>{Shapes2DIndex[removeIndex1]}</b> {`from`} <b>{Positions[i]}</b> {`and then`} <b>{Shapes2DIndex[removeIndex2]}</b> {`from`} <b>{Positions[j]}</b></>);
 
                 //console.log(JSON.parse(JSON.stringify(stepMatrix)).data);
 
