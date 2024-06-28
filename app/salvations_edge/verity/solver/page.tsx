@@ -93,7 +93,7 @@ export default function Page(): React.ReactNode {
                                     {
                                         Object.keys(Shapes2D).map((shape: string) => {
                                             return (
-                                                <img key={shape} src={`/salvations_edge/verity/${shape}.svg`} className={`w-[64px] h-[64px] cursor-pointer ${(guardian2DShapes[val] === shape) ? 'bg-gray-300' : ''}`} onClick={() => setGuardian2DShapeAt(val, shape as Shapes2DName)}/>
+                                                <img key={shape} src={`/salvations_edge/verity/${shape}.svg`} className={`w-[64px] h-[64px] cursor-pointer ${(guardian2DShapes[val] === shape) ? 'bg-gray-300' : 'hover:bg-blue-100'}`} onClick={() => setGuardian2DShapeAt(val, shape as Shapes2DName)}/>
                                             )
                                         })
                                     }
@@ -102,7 +102,7 @@ export default function Page(): React.ReactNode {
                                     {
                                         Object.keys(Shapes3D).map((shape: string) => {
                                             return (
-                                                <img key={shape} src={`/salvations_edge/verity/${shape}.svg`} className={`w-[64px] h-[64px] cursor-pointer ${(guardian3DShapes[val] === shape) ? 'bg-gray-300' : ''}`} onClick={() => setGuardian3DShapeAt(val, shape as Shapes3DName)}/>
+                                                <img key={shape} src={`/salvations_edge/verity/${shape}.svg`} className={`w-[64px] h-[64px] cursor-pointer ${(guardian3DShapes[val] === shape) ? 'bg-gray-300' : 'hover:bg-blue-100'}`} onClick={() => setGuardian3DShapeAt(val, shape as Shapes3DName)}/>
                                             )
                                         })
                                     }
